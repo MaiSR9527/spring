@@ -10,4 +10,8 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<bean id="person" class="com.msr.better.ch1_xml_bean.Person" />
+
+	<bean id="myBeanPostProcessor" class="com.msr.better.ch1_xml_bean.MyBeanPostProcessor" />
+	<bean id="myBeanFactoryPostProcessor" class="com.msr.better.ch1_xml_bean.MyBeanFactoryPostProcessor" />
+
 </beans>
