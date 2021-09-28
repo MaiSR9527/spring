@@ -1,4 +1,4 @@
-package com.msr.better.ch1_xml_bean;
+package com.msr.better.ch1xmlbean;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
@@ -11,7 +11,18 @@ import org.springframework.context.ApplicationContextAware;
  * @since 2021-06-03 23:50
  **/
 public class Person implements InitializingBean, ApplicationContextAware {
-    public Person() {
+
+	private Animal animal;
+
+	public Animal getAnimal() {
+		return animal;
+	}
+
+	public void setAnimal(Animal animal) {
+		this.animal = animal;
+	}
+
+	public Person() {
         System.out.println("person construct");
     }
 

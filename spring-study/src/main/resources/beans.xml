@@ -9,9 +9,14 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<bean id="person" class="com.msr.better.ch1_xml_bean.Person" />
+	<bean id="person" class="com.msr.better.ch1xmlbean.Person">
+		<property name="Animal" ref="animal"/>
+	</bean>
+	<bean id="animal" class="com.msr.better.ch1xmlbean.Animal">
+		<property name="Person" ref="person"/>
+	</bean>
 
-	<bean id="myBeanPostProcessor" class="com.msr.better.ch1_xml_bean.MyBeanPostProcessor" />
-	<bean id="myBeanFactoryPostProcessor" class="com.msr.better.ch1_xml_bean.MyBeanFactoryPostProcessor" />
+<!--	<bean id="myBeanPostProcessor" class="com.msr.better.ch1xmlbean.MyBeanPostProcessor" />-->
+<!--	<bean id="myBeanFactoryPostProcessor" class="com.msr.better.ch1xmlbean.MyBeanFactoryPostProcessor" />-->
 
 </beans>

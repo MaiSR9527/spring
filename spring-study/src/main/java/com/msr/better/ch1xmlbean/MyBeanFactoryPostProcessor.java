@@ -1,4 +1,4 @@
-package com.msr.better.ch1_xml_bean;
+package com.msr.better.ch1xmlbean;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;

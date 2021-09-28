@@ -1,8 +1,7 @@
 package com.msr.better.source;
 
-import com.msr.better.ch1_xml_bean.Person;
+import com.msr.better.ch1xmlbean.Person;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * @author MaiShuRen
