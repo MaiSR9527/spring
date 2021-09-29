@@ -99,7 +99,9 @@ public class ServletInvocableHandlerMethod extends InvocableHandlerMethod {
 	public void invokeAndHandle(ServletWebRequest webRequest, ModelAndViewContainer mavContainer,
 			Object... providedArgs) throws Exception {
 
+		// 对目标handler的参数进行处理，并调用目标handler
 		Object returnValue = invokeForRequest(webRequest, mavContainer, providedArgs);
+		// 设置返回状态
 		setResponseStatus(webRequest);
 
 		if (returnValue == null) {
