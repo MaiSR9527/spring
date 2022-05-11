@@ -31,4 +31,5 @@ rootProject.children.each {project ->
 }
 include 'spring-study'
 include 'spring-kernel-study'
+include 'mvc-test'
 

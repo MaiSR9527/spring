@@ -127,11 +127,13 @@ public class InvocableHandlerMethod extends HandlerMethod {
 	public Object invokeForRequest(NativeWebRequest request, @Nullable ModelAndViewContainer mavContainer,
 			Object... providedArgs) throws Exception {
 
+		// 获取handlerMethod的参数
 		Object[] args = getMethodArgumentValues(request, mavContainer, providedArgs);
 		if (logger.isTraceEnabled()) {
 			logger.trace("Invoking '" + ClassUtils.getQualifiedMethodName(getMethod(), getBeanType()) +
 					"' with arguments " + Arrays.toString(args));
 		}
+		// do! 真正调用了
 		Object returnValue = doInvoke(args);
 		if (logger.isTraceEnabled()) {
 			logger.trace("Method [" + ClassUtils.getQualifiedMethodName(getMethod(), getBeanType()) +
@@ -146,15 +148,22 @@ public class InvocableHandlerMethod extends HandlerMethod {
 	private Object[] getMethodArgumentValues(NativeWebRequest request, @Nullable ModelAndViewContainer mavContainer,
 			Object... providedArgs) throws Exception {
 
+		// 获取所有参数，参数名、类型、位置，所标注解
 		MethodParameter[] parameters = getMethodParameters();
 		Object[] args = new Object[parameters.length];
 		for (int i = 0; i < parameters.length; i++) {
 			MethodParameter parameter = parameters[i];
+			// providedArgs是调用方提供的参数，主要是判断这些参数中是否有当前类型，如果有，则直接使用调用方提供的参数，对于请求处理而言
+			// 默认情况下，调用放提供的参数都是长度为0的数组
 			parameter.initParameterNameDiscovery(this.parameterNameDiscoverer);
 			args[i] = resolveProvidedArgument(parameter, providedArgs);
 			if (args[i] != null) {
 				continue;
 			}
+			// 如果在调用放提供的参数中不能找到当前类型的参数值，则遍历Spring容器中所有的
+			// ArgumentResolver 判断那种类型的 Resolver 支持当前参数的解析
+			// 这里的判断方式比较简单，比如 RequestParamMethodArgumentResolver就是判断当前参数
+			// 是否使用 @RequestParam 注解
 			if (this.resolvers.supportsParameter(parameter)) {
 				try {
 					args[i] = this.resolvers.resolveArgument(
