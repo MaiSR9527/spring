@@ -10,9 +10,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  */
 public class SourceMain {
 
-	public static void main(String[] args) {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig.class);
-		Person person = context.getBean(Person.class);
-		System.out.println(person.getClass().getName());
-	}
+    public static void main(String[] args) {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig.class);
+        Person person = context.getBean(Person.class);
+        System.out.println(person.getClass().getName());
+    }
 }

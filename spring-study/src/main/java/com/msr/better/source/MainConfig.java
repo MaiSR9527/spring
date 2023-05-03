@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MainConfig {
 
-	@Bean
-	public Person person() {
-		return new Person();
-	}
+    @Bean
+    public Person person() {
+        return new Person();
+    }
 }
